@@ -1,0 +1,104 @@
+[
+  {
+    "_id": "61661bafb427113d2f8b468d",
+    "doc": {
+      "coord": {
+        "lon": 4.8897,
+        "lat": 52.374
+      },
+      "weather": [
+        {
+          "id": 802,
+          "main": "Clouds",
+          "description": "scattered clouds",
+          "icon": "03n"
+        }
+      ],
+      "base": "stations",
+      "main": {
+        "temp": 8.97,
+        "feels_like": 8.97,
+        "temp_min": 6.9,
+        "temp_max": 11.61,
+        "pressure": 1025,
+        "humidity": 89
+      },
+      "visibility": 10000,
+      "wind": {
+        "speed": 0.89,
+        "deg": 259,
+        "gust": 1.79
+      },
+      "clouds": {
+        "all": 40
+      },
+      "dt": 1634081704,
+      "sys": {
+        "type": 2,
+        "id": 2011826,
+        "country": "NL",
+        "sunrise": 1634104925,
+        "sunset": 1634143854
+      },
+      "timezone": 7200,
+      "id": 2759794,
+      "name": "Amsterdam",
+      "cod": 200
+    },
+    "calculatedAt": "2021-10-12T23:35:04.000Z",
+    "city": "465880a5-62d5-447c-9b06-6618a51fc8e1",
+    "id": "6ea8ee72-fbc4-404e-a00c-deeab6214eef",
+    "__v": 0
+  },
+  {
+    "_id": "616618a5b427113d2f8b4676",
+    "doc": {
+      "coord": {
+        "lon": 13.4105,
+        "lat": 52.5244
+      },
+      "weather": [
+        {
+          "id": 801,
+          "main": "Clouds",
+          "description": "few clouds",
+          "icon": "02n"
+        }
+      ],
+      "base": "stations",
+      "main": {
+        "temp": 5.15,
+        "feels_like": 2.29,
+        "temp_min": 2.19,
+        "temp_max": 7.19,
+        "pressure": 1008,
+        "humidity": 82
+      },
+      "visibility": 10000,
+      "wind": {
+        "speed": 3.58,
+        "deg": 297,
+        "gust": 4.02
+      },
+      "clouds": {
+        "all": 20
+      },
+      "dt": 1634080792,
+      "sys": {
+        "type": 2,
+        "id": 2011538,
+        "country": "DE",
+        "sunrise": 1634102890,
+        "sunset": 1634141800
+      },
+      "timezone": 7200,
+      "id": 2950159,
+      "name": "Berlin",
+      "cod": 200
+    },
+    "calculatedAt": "2021-10-12T23:19:52.000Z",
+    "city": "8fbb7edc-171f-49db-9325-7f7968e4dcd3",
+    "id": "f30bc5fa-6f61-4f0e-91e5-3864b4e97414",
+    "__v": 0
+  }
+]

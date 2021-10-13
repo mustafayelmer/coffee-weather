@@ -1,0 +1,49 @@
+{
+  "id": "6ea8ee72-fbc4-404e-a00c-deeab6214eef",
+  "city": "465880a5-62d5-447c-9b06-6618a51fc8e1",
+  "doc": {
+    "coord": {
+      "lon": 4.8897,
+      "lat": 52.374
+    },
+    "weather": [
+      {
+        "id": 802,
+        "main": "Clouds",
+        "description": "scattered clouds",
+        "icon": "03n"
+      }
+    ],
+    "base": "stations",
+    "main": {
+      "temp": 8.97,
+      "feels_like": 8.97,
+      "temp_min": 6.9,
+      "temp_max": 11.61,
+      "pressure": 1025,
+      "humidity": 89
+    },
+    "visibility": 10000,
+    "wind": {
+      "speed": 0.89,
+      "deg": 259,
+      "gust": 1.79
+    },
+    "clouds": {
+      "all": 40
+    },
+    "dt": 1634081704,
+    "sys": {
+      "type": 2,
+      "id": 2011826,
+      "country": "NL",
+      "sunrise": 1634104925,
+      "sunset": 1634143854
+    },
+    "timezone": 7200,
+    "id": 2759794,
+    "name": "Amsterdam",
+    "cod": 200
+  },
+  "calculatedAt": "2021-10-12T23:35:04.000Z"
+}

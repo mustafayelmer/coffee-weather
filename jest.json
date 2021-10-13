@@ -8,7 +8,7 @@
   "transform": {
     "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
   },
-  "testRegex": "/src/.*\\.(test|spec).(ts|tsx|js)$",
+  "testRegex": "/test/.*\\.spec.ts$",
   "collectCoverageFrom" : ["src/**/*.{js,jsx,tsx,ts}", "!**/node_modules/**", "!**/vendor/**"],
   "coverageReporters": ["json", "lcov"]
 }

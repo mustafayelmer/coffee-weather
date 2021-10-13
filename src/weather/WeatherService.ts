@@ -1,4 +1,4 @@
-import {Injectable} from "@nestjs/common";
+import {Injectable, Logger} from "@nestjs/common";
 import {InjectModel} from "@nestjs/mongoose";
 import {Model} from "mongoose";
 import * as uuid from 'uuid';
@@ -16,6 +16,7 @@ export class WeatherService {
     private static _INS: WeatherService;
     static readonly OWM_URL = 'https://api.openweathermap.org/data/2.5/weather';
     static readonly REQUIRED_PROPS: Array<string> = ['dt', 'id', 'name'];
+    private readonly logger = new Logger(WeatherService.name);
 
     constructor(
         @InjectModel(WeatherEntity.name) private readonly weatherModel: Model<WeatherDocument>,
@@ -63,7 +64,7 @@ export class WeatherService {
                     await this.createAsync(city);
                     count++;
                 } catch (e) {
-                    console.log(e);
+                    this.logger.error(e.message);
                 }
             }
         }
@@ -84,14 +85,15 @@ export class WeatherService {
         entity.calculatedAt = null;
         const old = await this.findLastAsync(city.id);
         const fetched = await WeatherService._fetchAsync(city.name);
-        if (old?.doc?.dt !== fetched?.dt) {
+        console.log('Old-New', {o: old?.doc?.dt, n: fetched?.dt});
+        if (!old?.doc?.dt || old?.doc?.dt !== fetched?.dt) {
             entity.doc = fetched;
             entity.calculatedAt = (new Date(fetched.dt * 1000)).toISOString();
             const createdCity = new this.weatherModel(entity);
             await createdCity.save();
         } else {
             entity.calculatedAt = old?.calculatedAt ?? null;
-            console.log(`[${city.name}] - Ignored weather because is same`);
+            this.logger.log(`[${city.name}] - Ignored weather because is same`);
         }
         return entity;
     }
@@ -108,7 +110,7 @@ export class WeatherService {
         if (!uuid.validate(cityId)) {
             throw new InvalidCityIdError(cityId ?? null);
         }
-        return this.weatherModel.findOne({city: cityId}).sort({calculatedAt: 1});
+        return this.weatherModel.findOne({city: cityId}).sort({calculatedAt: -1, _id: 1});
     }
     async findLastListAsync(cityIds: Array<string>): Promise<Array<WeatherEntity>> {
         const list: Array<WeatherEntity> = [];
@@ -131,7 +133,7 @@ export class WeatherService {
             calculatedAt: {
                 $gte: WeatherService._minAgedTime().toISOString()
             }
-        }).sort({calculatedAt: 1}).limit(100);
+        }).sort({calculatedAt: -1, _id: 1}).limit(100);
     }
 
     async clearAgedAsync(city: City): Promise<void> {
@@ -143,7 +145,7 @@ export class WeatherService {
                 }
             });
         } catch (e) {
-            console.log(e.message);
+            this.logger.error(e.message);
         }
         return null;
     }

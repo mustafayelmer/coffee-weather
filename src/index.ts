@@ -4,9 +4,9 @@ dotenv.config();
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { NestFactory } from '@nestjs/core';
 import {AppModule} from "./AppModule";
-import {Scheduler} from "./cron/Scheduler";
 import helmet from 'helmet';
 import {HttpExceptionFilter, NotFoundExceptionFilter} from "@yelmer-samples/coffee-shared";
+import {Logger} from "@nestjs/common";
 
 const port = process.env.HTTP_PORT ?? 8091;
 const bootstrap = async () => {
@@ -28,7 +28,8 @@ const bootstrap = async () => {
     const document = SwaggerModule.createDocument(app, options);
     SwaggerModule.setup('/docs', app, document);
     await app.listen(port);
-    console.log(`Application is running on: http://localhost:${port}`);
-    Scheduler.initialize();
+    const logger = new Logger('index');
+    logger.log(`-----------------------`);
+    logger.log(`Application is started`);
 }
 bootstrap().then();
