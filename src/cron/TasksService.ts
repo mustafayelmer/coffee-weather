@@ -7,7 +7,7 @@ export class TasksService {
     private readonly logger = new Logger(TasksService.name);
 
     @Cron(process.env.SCHEDULER_PATTERN ?? '0 0 0 * * *')
-    handleCron() {
+    handleCron(): void {
         this._runAsync().then();
     }
     private async _runAsync(): Promise<void> {
